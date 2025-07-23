@@ -1,0 +1,22 @@
+<extentreports>
+  <configuration>
+    
+    <!-- Report Branding -->
+    <theme>dark</theme> <!-- Options: standard, dark -->
+    <documentTitle>Latest And Greatest Report</documentTitle>
+    <reportName>Okay!! This is something dark and new</reportName>
+
+    <!-- Timestamp Format -->
+    <timeStampFormat>dd-MM-yyyy HH:mm:ss</timeStampFormat>
+
+    <!-- Chart Configuration -->
+    <chartVisibilityOnOpen>true</chartVisibilityOnOpen>
+    <timelineEnabled>true</timelineEnabled>
+
+    <!-- Optional -->
+    <encoding>utf-8</encoding>
+    <protocol>https</protocol>
+    <offlineMode>true</offlineMode> <!-- Avoid external calls -->
+
+  </configuration>
+</extentreports>
