@@ -75,4 +75,9 @@ public class carWaleSteps {
 		}
 	}
 
+	@When("User should be able to validate and view all the images on that page")
+	public void user_should_be_able_to_validate_and_view_all_the_images_on_that_page() {
+		homepage.verifyIfImagesAreGettingDisplayedOrNot();
+	}
+
 }

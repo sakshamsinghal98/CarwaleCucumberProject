@@ -1,4 +1,3 @@
-@Current
 Feature: Search car under Best category Sort it and verify sorting is working fine or not
 
 Scenario Outline: Searching cars Applying sorting and verifing the sorting

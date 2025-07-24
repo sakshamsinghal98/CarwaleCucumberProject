@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -250,6 +251,25 @@ public class BasePage {
 
 		}
 		return true;
+	}
+
+	public void verifyIfImagesAreGettingDisplayedOrNot() {
+		List<WebElement> images = driver.findElements(By.tagName("img"));
+		int broken = 0;
+		for (WebElement image : images) {
+			boolean isDisplayed = (Boolean) ((JavascriptExecutor) driver)
+					.executeScript("return arguments[0].complete && arguments[0].naturalWidth > 0", image);
+			if (!isDisplayed) {
+				System.out.println("❌ Broken image: " + image.getAttribute("src"));
+				broken++;
+			}
+		}
+		if (broken == 0) {
+			System.out.println("✅ All images are loading properly.");
+		} else {
+			System.out.println("Total broken images: " + broken);
+		}
+
 	}
 
 }
