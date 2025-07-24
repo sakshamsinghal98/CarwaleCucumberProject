@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>3/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Jul 23 11:11:52 IST 2025</td>
+<td>Started on:</td><td>Thu Jul 24 12:51:59 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>54 seconds (54571 ms)</td>
+<tr><td>Total time:</td><td>34 seconds (34589 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,86 +76,31 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='runner.runCuke.runScenario()'><b>runScenario</b><br>Test class: runner.runCuke<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Finding new Cars", "Search New Car"</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;Find New Cars&apos;)]&quot;}
-  (Session info: chrome=138.0.7204.158)
+<td title='runner.runCuke.runScenario()'><b>runScenario</b><br>Test class: runner.runCuke<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Searching cars Applying sorting and verifing the sorting", "Search car under Best category Sort it and verify sorting is working fine or not"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Cannot locate option with text: selectByValue
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.34.0&apos;, revision: &apos;707dcb4246*&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [21c5705fe527bd729a321d4a67b7a6d9, findElement {value=//div[contains(text(),&apos;Find New Cars&apos;)], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.158, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\SAKSHAM\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:4481}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:4481/devtool..., se:cdpVersion: 138.0.7204.158, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 21c5705fe527bd729a321d4a67b7a6d9
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:361)
-	at pages.base.BasePage.click(BasePage.java:43)
-	at page.objects.HomePage.clickNewCars(HomePage.java:12)
-	at stepDefinitions.carWaleSteps.user_clicks_on_find_new_cars(carWaleSteps.java:37)
-	at ✽.User clicks on FindNewCars(file:///E:/Selenium%20Frameworks/CucumberPageObjectFramework/src/test/resources/features/findnewcar.feature:9)
-... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1969925628", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1969925628'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;Find New Cars&apos;)]&quot;}
-  (Session info: chrome=138.0.7204.158)
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.selectByContainsVisibleText(Select.java:236)
+	at pages.base.BasePage.selectDropDown(BasePage.java:182)
+	at page.objects.searchedCarPage.sortUsingDropDown(searchedCarPage.java:8)
+	at stepDefinitions.SearchAndSortSteps.user_clicks_on_sort_dropdown_and_select_sort_using_price_low_to_high(SearchAndSortSteps.java:25)
+	at ✽.User clicks on Sort dropdown and select sort using &quot;Price - High to Low&quot;(file:///E:/Selenium%20Frameworks/CucumberPageObjectFramework/src/test/resources/features/searchCarUnderXXRupeesAndTestSortFunctionality.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1999415998", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1999415998'><pre>org.openqa.selenium.NoSuchElementException: Cannot locate option with text: selectByValue
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.34.0&apos;, revision: &apos;707dcb4246*&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [21c5705fe527bd729a321d4a67b7a6d9, findElement {value=//div[contains(text(),&apos;Find New Cars&apos;)], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.158, chrome: {chromedriverVersion: 138.0.7204.157 (e533e98b126..., userDataDir: C:\Users\SAKSHAM\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:4481}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:4481/devtool..., se:cdpVersion: 138.0.7204.158, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 21c5705fe527bd729a321d4a67b7a6d9
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:361)
-	at pages.base.BasePage.click(BasePage.java:43)
-	at page.objects.HomePage.clickNewCars(HomePage.java:12)
-	at stepDefinitions.carWaleSteps.user_clicks_on_find_new_cars(carWaleSteps.java:37)
-	at ✽.User clicks on FindNewCars(file:///E:/Selenium%20Frameworks/CucumberPageObjectFramework/src/test/resources/features/findnewcar.feature:9)
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.selectByContainsVisibleText(Select.java:236)
+	at pages.base.BasePage.selectDropDown(BasePage.java:182)
+	at page.objects.searchedCarPage.sortUsingDropDown(searchedCarPage.java:8)
+	at stepDefinitions.SearchAndSortSteps.user_clicks_on_sort_dropdown_and_select_sort_using_price_low_to_high(SearchAndSortSteps.java:25)
+	at ✽.User clicks on Sort dropdown and select sort using &quot;Price - High to Low&quot;(file:///E:/Selenium%20Frameworks/CucumberPageObjectFramework/src/test/resources/features/searchCarUnderXXRupeesAndTestSortFunctionality.feature:8)
 </pre></div></td>
-<td>20</td>
-<td>runner.runCuke@757277dc</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='runner.runCuke.runScenario()'><b>runScenario</b><br>Test class: runner.runCuke<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Finding new Cars", "Search New Car"</td>
-<td></td>
-<td>11</td>
-<td>runner.runCuke@757277dc</td></tr>
-<tr>
-<td title='runner.runCuke.runScenario()'><b>runScenario</b><br>Test class: runner.runCuke<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Finding new Cars", "Search New Car"</td>
-<td></td>
-<td>10</td>
-<td>runner.runCuke@757277dc</td></tr>
-<tr>
-<td title='runner.runCuke.runScenario()'><b>runScenario</b><br>Test class: runner.runCuke<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Finding new Cars", "Search New Car"</td>
-<td></td>
-<td>9</td>
-<td>runner.runCuke@757277dc</td></tr>
+<td>32</td>
+<td>runner.runCuke@5c90e579</td></tr>
 </table><p>
 </body>
 </html>
