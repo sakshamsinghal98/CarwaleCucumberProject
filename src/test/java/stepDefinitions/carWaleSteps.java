@@ -84,5 +84,11 @@ public class carWaleSteps {
 	public void user_should_be_able_to_verify_the_color_coding_of_footer() {
 		homepage.verifyFooterColor();
 	}
+	
+	@Then("User will export the names and prices of all the cars for that brand")
+	public void user_will_export_the_names_and_prices_of_all_the_cars_for_that_brand() {
+		toyotacar.exportCarNameAndPrice();
+	}
+
 
 }

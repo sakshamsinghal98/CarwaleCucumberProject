@@ -1,9 +1,16 @@
 package pages.base;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +28,8 @@ public class BasePage {
 	private WebElement mouseOverElement;
 	private WebElement selectElement;
 	private List<WebElement> sortListWebElements;
+	private List<String> carNames = new ArrayList<String>();
+	private List<String> carPrices = new ArrayList<String>();
 	private String elementColor;
 	List<Double> carPrice = new ArrayList<Double>();
 	WebDriverWait wait;
@@ -35,8 +44,6 @@ public class BasePage {
 		if (locator.endsWith("_XPATH")) {
 			mouseOverElement = wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))));
-			// mouseOverElement =
-			// driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)));
 		}
 
 		else if (locator.endsWith("_ID")) {
@@ -50,7 +57,8 @@ public class BasePage {
 		}
 
 		else if (locator.endsWith("_LINKTEXT")) {
-			mouseOverElement = driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)));
+			mouseOverElement = wait.until(ExpectedConditions
+					.visibilityOf(driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
 		new Actions(driver).moveToElement(mouseOverElement).perform();
@@ -308,6 +316,140 @@ public class BasePage {
 			return true;
 		}
 		return false;
+	}
+
+	public List<List<String>> getCarNameAndPrice(String carNameLocator, String carPriceLocator) {
+
+		if (carNameLocator.endsWith("_XPATH")) {
+			List<WebElement> carNamesWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carNameLocator)))));
+			for (WebElement carName : carNamesWebElements) {
+				carNames.add(carName.getText());
+			}
+			System.out.println(carNames);
+		}
+
+		else if (carNameLocator.endsWith("_ID")) {
+			List<WebElement> carNamesWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carNameLocator)))));
+
+			for (WebElement carName : carNamesWebElements) {
+				carNames.add(carName.getText());
+
+			}
+			System.out.println(carNames);
+		}
+
+		else if (carNameLocator.endsWith("_CSS")) {
+
+			List<WebElement> carNamesWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carNameLocator)))));
+
+			for (WebElement carName : carNamesWebElements) {
+				String car = carName.getText();
+				carNames.add(car);
+
+			}
+			System.out.println(carNames);
+
+		}
+
+		else if (carNameLocator.endsWith("_LINKTEXT")) {
+			List<WebElement> carNamesWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carNameLocator)))));
+
+			for (WebElement carName : carNamesWebElements) {
+				carNames.add(carName.getText());
+			}
+			System.out.println(carNames);
+
+		}
+
+		if (carPriceLocator.endsWith("_XPATH")) {
+			List<WebElement> carPriceWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carPriceLocator)))));
+
+			for (WebElement pricecar : carPriceWebElements) {
+				carPrices.add(pricecar.getText());
+
+			}
+			System.out.println(carPrices);
+		}
+
+		else if (carPriceLocator.endsWith("_ID")) {
+			List<WebElement> carPriceWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carPriceLocator)))));
+
+			for (WebElement pricecar : carPriceWebElements) {
+				carPrices.add(pricecar.getText());
+
+			}
+			System.out.println(carPrices);
+
+		}
+
+		else if (carPriceLocator.endsWith("_CSS")) {
+			List<WebElement> carPriceWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carPriceLocator)))));
+
+			for (WebElement pricecar : carPriceWebElements) {
+				carPrices.add(pricecar.getText());
+			}
+			System.out.println(carPrices);
+
+		}
+
+		else if (carPriceLocator.endsWith("_LINKTEXT")) {
+			List<WebElement> carPriceWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
+					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(carPriceLocator)))));
+
+			for (WebElement pricecar : carPriceWebElements) {
+				carPrices.add(pricecar.getText());
+			}
+			System.out.println(carPrices);
+
+		}
+
+		return List.of(carNames, carPrices);
+	}
+
+	public void exportToExcel(List<List<String>> nameAndPriceList) {
+		carNames = nameAndPriceList.get(0);
+		carPrices = nameAndPriceList.get(1);
+		String filePath = "E://Selenium Frameworks//Car Name And Prices.xlsx";
+		System.out.println("--------------------We are under the exort to Excel Mothod--------------------------- ");
+		System.out.println(carNames);
+		System.out.println(carPrices);
+
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sheet = workbook.createSheet("Toyota Car Name and Pricing");
+
+		while (sheet.getPhysicalNumberOfRows() > 0) {
+			sheet.removeRow(sheet.getRow(0));
+		}
+
+		Row headerrow = sheet.createRow(0);
+		headerrow.createCell(0).setCellValue("Car Name");
+		headerrow.createCell(1).setCellValue("Car Price");
+
+		for (int i = 0; i < carPrices.size(); i++) {
+			Row row = sheet.createRow(i + 1);
+			row.createCell(0).setCellValue(carNames.get(i));
+			row.createCell(1).setCellValue(carPrices.get(i));
+		}
+
+		try {
+			FileOutputStream fos = new FileOutputStream(filePath);
+			workbook.write(fos);
+			workbook.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }
