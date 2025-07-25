@@ -80,4 +80,9 @@ public class carWaleSteps {
 		homepage.verifyIfImagesAreGettingDisplayedOrNot();
 	}
 
+	@Then("User should be able to verify the color coding of footer")
+	public void user_should_be_able_to_verify_the_color_coding_of_footer() {
+		homepage.verifyFooterColor();
+	}
+
 }

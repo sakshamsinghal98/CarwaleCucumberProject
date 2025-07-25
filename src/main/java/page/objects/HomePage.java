@@ -23,4 +23,8 @@ public class HomePage extends BasePage {
 		return new searchedCarPage();
 	}
 
+	public void verifyFooterColor() {
+		veriyColorCoding("footer_XPATH", "#002b51");
+	}
+
 }

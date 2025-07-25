@@ -9,11 +9,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import utils.SeleniumDriver;
 
 public class BasePage {
@@ -22,6 +21,7 @@ public class BasePage {
 	private WebElement mouseOverElement;
 	private WebElement selectElement;
 	private List<WebElement> sortListWebElements;
+	private String elementColor;
 	List<Double> carPrice = new ArrayList<Double>();
 	WebDriverWait wait;
 
@@ -39,17 +39,17 @@ public class BasePage {
 			// driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)));
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			mouseOverElement = wait.until(
 					ExpectedConditions.visibilityOf(driver.findElement(By.id(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			mouseOverElement = wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.cssSelector(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			mouseOverElement = driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)));
 		}
 
@@ -63,23 +63,23 @@ public class BasePage {
 					.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator))))).click();
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			wait.until(
 					ExpectedConditions.visibilityOf(driver.findElement(By.id(SeleniumDriver.OR.getProperty(locator)))))
 					.click();
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.cssSelector(SeleniumDriver.OR.getProperty(locator))))).click();
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator))))).click();
 		}
 
-		if (locator.endsWith("_CLASSNAME")) {
+		else if (locator.endsWith("_CLASSNAME")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.className(SeleniumDriver.OR.getProperty(locator))))).click();
 		}
@@ -122,25 +122,25 @@ public class BasePage {
 					.sendKeys(value);
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			wait.until(
 					ExpectedConditions.visibilityOf(driver.findElement(By.id(SeleniumDriver.OR.getProperty(locator)))))
 					.sendKeys(value);
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.cssSelector(SeleniumDriver.OR.getProperty(locator)))))
 					.sendKeys(value);
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)))))
 					.sendKeys(value);
 		}
 
-		if (locator.endsWith("_CLASSNAME")) {
+		else if (locator.endsWith("_CLASSNAME")) {
 			wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.className(SeleniumDriver.OR.getProperty(locator)))))
 					.sendKeys(value);
@@ -158,21 +158,21 @@ public class BasePage {
 
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			return wait
 					.until(ExpectedConditions
 							.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))))
 					.getText();
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			return wait
 					.until(ExpectedConditions
 							.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))))
 					.getText();
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			return wait
 					.until(ExpectedConditions
 							.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))))
@@ -197,17 +197,17 @@ public class BasePage {
 					.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			selectElement = wait.until(
 					ExpectedConditions.visibilityOf(driver.findElement(By.id(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			selectElement = wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.cssSelector(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			selectElement = wait.until(ExpectedConditions
 					.visibilityOf(driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)))));
 		}
@@ -222,17 +222,17 @@ public class BasePage {
 					.visibilityOfAllElements(driver.findElements(By.xpath(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_ID")) {
+		else if (locator.endsWith("_ID")) {
 			sortListWebElements = wait.until(ExpectedConditions
 					.visibilityOfAllElements(driver.findElements(By.id(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_CSS")) {
+		else if (locator.endsWith("_CSS")) {
 			sortListWebElements = wait.until(ExpectedConditions.visibilityOfAllElements(
 					driver.findElements(By.cssSelector(SeleniumDriver.OR.getProperty(locator)))));
 		}
 
-		if (locator.endsWith("_LINKTEXT")) {
+		else if (locator.endsWith("_LINKTEXT")) {
 			sortListWebElements = wait.until(ExpectedConditions
 					.visibilityOfAllElements(driver.findElements(By.linkText(SeleniumDriver.OR.getProperty(locator)))));
 		}
@@ -270,6 +270,44 @@ public class BasePage {
 			System.out.println("Total broken images: " + broken);
 		}
 
+	}
+
+	public boolean veriyColorCoding(String locator, String expectedColor) {
+
+		if (locator.endsWith("_XPATH")) {
+			elementColor = wait
+					.until(ExpectedConditions
+							.visibilityOf(driver.findElement(By.xpath(SeleniumDriver.OR.getProperty(locator)))))
+					.getCssValue("background-color");
+		}
+
+		else if (locator.endsWith("_ID")) {
+			elementColor = wait
+					.until(ExpectedConditions
+							.visibilityOf(driver.findElement(By.id(SeleniumDriver.OR.getProperty(locator)))))
+					.getCssValue("background-color");
+		}
+
+		else if (locator.endsWith("_CSS")) {
+			elementColor = wait
+					.until(ExpectedConditions
+							.visibilityOf(driver.findElement(By.cssSelector(SeleniumDriver.OR.getProperty(locator)))))
+					.getCssValue("background-color");
+		}
+
+		else if (locator.endsWith("_LINKTEXT")) {
+			elementColor = wait
+					.until(ExpectedConditions
+							.visibilityOf(driver.findElement(By.linkText(SeleniumDriver.OR.getProperty(locator)))))
+					.getCssValue("background-color");
+		}
+
+		String hexColor = Color.fromString(elementColor).asHex();
+		if (hexColor.equals(expectedColor)) {
+			System.out.println(hexColor);
+			return true;
+		}
+		return false;
 	}
 
 }
